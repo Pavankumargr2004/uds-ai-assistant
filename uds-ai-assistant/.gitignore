@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+data/projects/
+data/uds_assistant.sqlite3
+.venv/
+venv/
+*.log
+.DS_Store

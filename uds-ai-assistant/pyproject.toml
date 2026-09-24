@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uds-ai-assistant"
+version = "1.0.0"
+description = "UDS diagnostics and automated test generation assistant (RAG + deterministic protocol rules)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "pydantic>=2.5",
+  "pyyaml>=6.0",
+  "fastapi>=0.110",
+  "uvicorn[standard]>=0.27",
+  "python-multipart>=0.0.9",
+  "httpx>=0.26",
+  "streamlit>=1.35",
+  "pypdf>=4.0",
+  "neo4j>=5.14.0",
+  "sqlalchemy>=2.0",
+  "psycopg2-binary>=2.9",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+chroma = ["chromadb>=0.5", "sentence-transformers>=3.0"]
+hardware = ["python-can>=4.3", "can-isotp>=2.0"]
+
+[project.scripts]
+uds-ai = "uds_assistant.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["uds_assistant*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --basetemp=.pytest_temp"
